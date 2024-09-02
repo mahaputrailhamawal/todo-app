@@ -17,5 +17,15 @@ Content-Type: application/json
     "password" : "dadangjaya1234"
 }
 
+### Update User
+PATCH http://localhost:8000/todoapp/api/v1/update
+Content-Type: application/json
+
+{
+    "name": "Dadang Jaya",
+    "email": "dadangjaya@gmail.com",
+    "password" : "dadangjaya1234"
+}
+
 ### Logout User
 POST http://localhost:8000/todoapp/api/v1/logout

@@ -24,6 +24,23 @@ const UserRepository = {
         } catch (error) {
             console.log(error);
         }
+    },
+
+    updateUser: async (id: string, user: IUser) => {
+        try {
+            const userId = id;
+            const { name, email, password } = user;
+
+            const hashedPassword = await bcrypt.hash(password, 13);
+            const updatedUser = await User.findByIdAndUpdate(
+                {_id:userId}, 
+                {name, email, password: hashedPassword}, 
+                { new: true }
+            );
+            return updatedUser;
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import UserService from "../services/user.service";
 import { Auth } from "../models/auth.schema";
+import jwt from "jsonwebtoken";
 
 const UserController = {
     // Create User
@@ -47,6 +48,22 @@ const UserController = {
         await Auth.findOneAndDelete({ refreshToken });
 
         return res.clearCookie("accessToken").clearCookie("refreshToken").status(200).json({ message: "User logged out" });
+    },
+
+    handleUpdateUser: async (req: Request, res: Response) => {
+        try {
+            const { accessToken } = req.cookies;
+
+            const payload = jwt.decode(accessToken) as { id: string, name: string, email: string };
+
+            const { name, email, password } = req.body;
+
+            const updateUser = await UserService.updateUser(payload.id, { name, email, password });
+
+            return res.status(200).json({ message: "User updated successfully", data: updateUser });
+        } catch (error) {
+            console.log(error);
+        }
     }
 };
 
