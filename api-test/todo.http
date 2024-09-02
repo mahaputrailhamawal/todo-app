@@ -1,0 +1,8 @@
+### Create New Todo
+POST http://localhost:8000/todoapp/api/v1/todo/create
+Content-Type: application/json
+
+{
+    "title": "Todo 1",
+    "completed": false  
+}

@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { userRouter } from './routes/user.route';
+import { todoRouter } from './routes/todo.route';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 
@@ -20,7 +21,8 @@ app.use(cookieParser());
 
 app.use(express.json());
 
-app.use("/todoapp/api/v1/", userRouter)
+app.use("/todoapp/api/v1/", userRouter);
+app.use("/todoapp/api/v1/todo", todoRouter);
 
 app.listen(process.env.PORT, () => {
    console.log(`Server is running on port ${process.env.PORT}`); 

@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
     "email": "dadangjaya@gmail.com",
-    "password" : "dadangjaya1234"
+    "password" : "Dadangjaya1234!"
 }
 
 ### Update User
@@ -24,7 +24,7 @@ Content-Type: application/json
 {
     "name": "Dadang Jaya",
     "email": "dadangjaya@gmail.com",
-    "password" : "dadangjaya1234"
+    "password" : "Dadangjaya1234!"
 }
 
 ### Logout User
