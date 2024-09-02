@@ -1,0 +1,21 @@
+### Create User
+POST http://localhost:8000/todoapp/api/v1/signup
+Content-Type: application/json
+
+{
+    "name": "Dadang",
+    "email": "dadangjaya@gmail.com",
+    "password" : "dadangjaya1234"
+}
+
+### Login user
+POST http://localhost:8000/todoapp/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "dadangjaya@gmail.com",
+    "password" : "dadangjaya1234"
+}
+
+### Logout User
+POST http://localhost:8000/todoapp/api/v1/logout
