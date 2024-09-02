@@ -22,6 +22,29 @@ const TodoController = {
         } catch (error) {
             next(error);
         }
+    },
+    handleGetAllTodo: async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const allTodo = await TodoService.getAllTodo();
+            return res.status(200).json({ message: 'Todos retrieved successfully', data: allTodo });
+        } catch (error) {
+            next(error);
+        }
+    },
+    handleGetTodoById: async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const { accessToken } = req.cookies;
+
+            const payload = jwt.decode(accessToken) as { id: string, name: string, email: string };
+            console.log(payload.id);
+            
+            const todo = await TodoService.getTodoById(payload.id);
+            // console.log(todo);
+
+            return res.status(200).json({ message: 'Todo retrieved successfully', data: todo });
+        } catch (error) {
+            next(error);
+        }
     }
 };
 

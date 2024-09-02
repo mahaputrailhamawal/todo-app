@@ -13,6 +13,23 @@ const TodoService = {
         } catch (error) {
             throw error;
         }
+    },
+    getAllTodo: async () => {
+        try {
+            const allTodo = await TodoRepository.getAllTodo();
+            return allTodo;
+        } catch (error) {
+            throw error;
+        }
+    },
+    getTodoById: async (id: string) => {
+        try {
+            const todo = await TodoRepository.getTodoById(id);
+            // console.log(todo);
+            return todo;
+        } catch (error) {
+            throw error;
+        }
     }
 };
 
