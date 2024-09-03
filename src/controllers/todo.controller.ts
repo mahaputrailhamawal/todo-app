@@ -36,12 +36,37 @@ const TodoController = {
             const { accessToken } = req.cookies;
 
             const payload = jwt.decode(accessToken) as { id: string, name: string, email: string };
-            console.log(payload.id);
             
             const todo = await TodoService.getTodoById(payload.id);
-            // console.log(todo);
+            console.log(todo);
 
             return res.status(200).json({ message: 'Todo retrieved successfully', data: todo });
+        } catch (error) {
+            next(error);
+        }
+    },
+    handleUpdateTodo: async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            // const { accessToken } = req.cookies;
+
+            // const payload = jwt.decode(accessToken) as { id: string, name: string, email: string };
+            const todoId = req.params.id;
+            // console.log(todoId);
+            const { title, completed, userId } = req.body;
+            // console.log(req.body);
+
+            const updateTodo = await TodoService.updateTodo(todoId, { title, completed, userId });
+           
+            return res.status(200).json({ message: 'Todo updated successfully', data: updateTodo });
+        } catch (error) {
+            next(error);
+        }
+    },
+    handleDeleteTodo: async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const id = req.params.id;
+            const deletedTodo = await TodoService.deleteTodo(id);
+            return res.status(200).json({ message: 'Todo deleted successfully', data: deletedTodo });
         } catch (error) {
             next(error);
         }

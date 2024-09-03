@@ -12,3 +12,14 @@ GET http://localhost:8000/todoapp/api/v1/todo/
 
 ### Get Todo by UserID
 GET http://localhost:8000/todoapp/api/v1/todo/my-todo
+
+### Update Todo
+PATCH http://localhost:8000/todoapp/api/v1/todo/update/66d5405f91d4ce651223be4e
+
+{
+    "title": "Todo 1",
+    "completed": true 
+}
+
+### Delete Todo
+DELETE http://localhost:8000/todoapp/api/v1/todo/delete/66d5401ecb3c8931683bc57d

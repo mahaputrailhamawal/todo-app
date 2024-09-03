@@ -30,6 +30,22 @@ const TodoService = {
         } catch (error) {
             throw error;
         }
+    },
+    updateTodo: async (id: string, todo: ITodo) => {
+        try {
+            const updatedTodo = await TodoRepository.updateTodo(id, todo);
+            return updatedTodo;
+        } catch (error) {
+            throw error;
+        }
+    },
+    deleteTodo: async (id: string) => {
+        try {
+            const deletedTodo = await TodoRepository.deleteTodo(id);
+            return deletedTodo;
+        } catch (error) {
+            throw error;
+        }
     }
 };
 
