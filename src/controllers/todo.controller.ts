@@ -38,22 +38,16 @@ const TodoController = {
             const payload = jwt.decode(accessToken) as { id: string, name: string, email: string };
             
             const todo = await TodoService.getTodoById(payload.id);
-            console.log(todo);
-
+            
             return res.status(200).json({ message: 'Todo retrieved successfully', data: todo });
         } catch (error) {
             next(error);
         }
     },
     handleUpdateTodo: async (req: Request, res: Response, next: NextFunction) => {
-        try {
-            // const { accessToken } = req.cookies;
-
-            // const payload = jwt.decode(accessToken) as { id: string, name: string, email: string };
+        try {            
             const todoId = req.params.id;
-            // console.log(todoId);
             const { title, completed, userId } = req.body;
-            // console.log(req.body);
 
             const updateTodo = await TodoService.updateTodo(todoId, { title, completed, userId });
            
